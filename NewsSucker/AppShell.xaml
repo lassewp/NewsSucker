@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="NewsSucker.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NewsSucker"
+    xmlns:views="clr-namespace:NewsSucker.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="News" Icon="newspaper.png">
+            <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="Main"/>
+            <ShellContent Title="Food" ContentTemplate="{DataTemplate views:FoodPage}" Route="Food"/>
+            <ShellContent Title="Weather" ContentTemplate="{DataTemplate views:WeatherPage}" Route="Weather"/>
+            <ShellContent Title="Politics" ContentTemplate="{DataTemplate views:PoliticPage}" Route="Politic"/>
+            <ShellContent Title="Music" ContentTemplate="{DataTemplate views:MusicPage}" Route="Music"/>
+        </Tab>
+        <Tab Title="Settings" Icon="settings.png">
+            <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingPage}" Route="Settings"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

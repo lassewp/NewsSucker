@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsSucker.Views.SettingPage"
+             xmlns:viewmodel="clr-namespace:NewsSucker.ViewModels"
+             x:DataType="viewmodel:SettingViewModel"
+             Title="SettingPage">
+    <VerticalStackLayout Padding="10">
+        
+        <VerticalStackLayout Margin="0,0,0,20">
+            <Label Text="Settings" FontSize="24"/>
+            <Label Text="Set theme or add news filters" FontSize="14" Grid.Row="1" TextColor="Gray"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Margin="0,0,0,10">
+            <Label Text="Theme" FontSize="18"/>
+            <HorizontalStackLayout>
+                <Label Text="Light Theme" VerticalOptions="Center"/>
+                <RadioButton GroupName="ThemeRadio"></RadioButton>
+
+                <Label Text="Dark Theme" VerticalOptions="Center"/>
+                <RadioButton GroupName="ThemeRadio"></RadioButton>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="News Filter" FontSize="18"/>
+            <Picker Title="Select News Filter" ItemsSource="{Binding Filters}" ItemDisplayBinding="{Binding Name}"/>
+            <Button Text="Add new filter" Command="{Binding AddNewFilterCommand}"/>
+            <Label Text="Add words for news filter"/>
+            <HorizontalStackLayout Spacing="5">
+                <Entry WidthRequest="280" Placeholder="Enter word to be added" Text="{Binding UserInput}"/>
+                <Button Text="Add" Command="{Binding AddWordCommand}"/>
+            </HorizontalStackLayout>
+            <CollectionView ItemsSource="{Binding }">
+                
+            </CollectionView>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

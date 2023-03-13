@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsSucker.Views.MusicPage"
+             xmlns:viewmodels="clr-namespace:NewsSucker.ViewModels"
+             xmlns:models="clr-namespace:NewsSucker.Models"
+             x:DataType="viewmodels:MusicViewModel"
+             Title="Music">
+
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Music News" FontSize="24"/>
+
+        <Label Text="Sucked from Danmarks Radio" FontSize="14" Grid.Row="1" TextColor="Gray"/>
+
+        <RefreshView Grid.Row="2" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="cview" ItemsSource="{Binding Stories}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="models:Story">
+                        <Border Stroke="#5011d6" MinimumHeightRequest="150" MaximumHeightRequest="180" Padding="5">
+                            <Grid ColumnDefinitions="2*, 5*">
+                                <FlexLayout Grid.Column="1" Direction="Column" JustifyContent="SpaceBetween">
+                                    <Label Text="{Binding Title}" FontSize="14" FontFamily="OpenSansSemibold"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding PublishedDate}" FontSize="10" TextColor="#5011d6"/>
+                                </FlexLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+
+    </Grid>
+
+</ContentPage>
